@@ -1,0 +1,18 @@
+# 秘密（鍵・DB の場所）。絶対に上げない
+.env
+*.env.local
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
+
+# 画面
+node_modules/
+frontend/dist/
+
+# 手元で試すときに落としたフィード（中身は自分の予定）
+*.ics
+*.tsbuildinfo

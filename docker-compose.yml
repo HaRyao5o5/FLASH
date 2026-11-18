@@ -1,0 +1,16 @@
+# 手元で動かす PostgreSQL。`docker compose up -d` で起動する。
+# 初回だけ docker/init-roles.sql が流れて、役割（flash_owner / flash_app）と DB ができる。
+# 作り直したいときは `docker compose down -v`（**中身が全部消える**）。
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - flash_pg:/var/lib/postgresql/data
+      - ./docker/init-roles.sql:/docker-entrypoint-initdb.d/10-roles.sql:ro
+
+volumes:
+  flash_pg:
